@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-color="color" v-font='size' >加油你们是最胖的</div>
+        <div >
+            <button v-click="handle">点击</button>
+        </div>
+      
+    </div>
+</body>
+</html>
+<script src="vue.js"></script>
+<script>
+Vue.directive('hide',(el,{value,modifiers})=>{
+    console.log(modifiers)
+})
+
+
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+<div class="good">
+    <div>三只松鼠</div>
+    <p>单价:{{price}}</p>
+    <button @click="handelReducer">-</button>
+    <input type="text" v-model.number='num'>
+    <button  @click="handelAdd">+</button>
+    <p>小计:￥{{sum}}</p>
+    <p>运费:￥{{freight}}</p>
+    <p>应付:￥{{pay}}</p>
+</div>
+    </div>
+</body>
+</html>
+<script src="./vue.js"></script>
+<script>
+new Vue({
+    el:"#app",
+    data:{
+price:"39.8",
+num:'1',
+freight:10
+    },
+    methods:{
+handelReducer(){
+    if(this.num<=1){
+        this.num=1;
+    }else{
+        this.num--;
+    }
+},
+handelAdd(){
+    this.num++;
+}
+    },
+    computed:{
+sum(){
+    return this.num * (this.price*10)/10;
+},
+pay(){
+    let countPrice=this.num*(this.price*10)/10;
+    if(countPrice>=299){
+        return countPrice;
+    } else {
+        return countPrice+this.freight;
+    }
+}
+    }
+})
+
+
+</script>

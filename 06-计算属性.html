@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model.number="a">
+        <input type="text" v-model.number="b">
+        <button @click='handleAdd()'>计算</button>
+        <p>结果为:{{sum}}</p>
+        <p>computed:{{count}}</p>
+
+        <button @click="test()">对比</button>
+    </div>
+</body>
+</html>
+<script src="./vue.js"></script>
+<script>
+   
+new Vue({
+    el:'#app',
+    data:{
+      a:"",
+      b:""  ,
+      sum:""
+    },
+    methods:{
+        handleAdd(){
+            console.log('methods')
+            this.sum=this.a+this.b;
+        },
+        test(){
+           this.handleAdd();
+        
+           console.log(this.count)
+        }
+    },
+   computed:{
+ count(){
+     console.log('computed 被调用')
+    return this.a+this.b;
+ }
+    }
+})
+//计算属性
+    //通过计算得来的属性
+//computed : 是一个计算属性，用来监听属性的变化
+//computed 里面的方法调用的时候是不需要加（） 另外里面的方法必须要有一个返回值
+//computed里面的方法不是通过事件来触发的，而是当属性（必须是data）发生变化的时候当前函数才会被触发
+</script>

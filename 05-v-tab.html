@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .active{
+        background: red;
+        color:blue;
+    }
+    .content{
+        width: 200px;
+        height: 200px;
+        background: #ccc;
+        overflow: hidden;
+    }
+    .content>div{
+        width: 200px;
+        height: 200px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    <div class="btns">
+       <button
+        v-for="(item,index) in btns"
+         :class="activeIndex==index?'active':''"
+         @click='handleToggle(index)'
+         >{{item}}</button>
+    </div>
+    <div class="content">
+       <div
+        v-for="(item,index ) in contents"
+        v-show="activeIndex==index"
+        >{{item}}</div>
+    </div>
+    </div>
+</body>
+</html>
+
+<script src="./vue.js"></script>
+<script>
+ var app=new Vue({
+    el:'#app',
+    data:{
+        btns:['按钮1','按钮 2','按钮3'],
+        contents:['111','222','333'],
+        activeIndex:0    
+      
+    },
+    methods:{
+        handleToggle(index){
+            this.activeIndex=index;
+        }
+    }
+})
+
+
+</script>
